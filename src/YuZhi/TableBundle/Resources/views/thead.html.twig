@@ -1,0 +1,11 @@
+<thead>
+<tr>
+    {% for key, var in view.table_thead %}
+        <th>
+            <div {% for k, val in var %}{% if k != 'options' %} data-{{ k }}="{{ val }}"{% endif %}{% endfor %}>
+                {{ var.title }}
+            </div>
+        </th>
+    {% endfor %}
+</tr>
+</thead>

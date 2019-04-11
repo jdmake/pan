@@ -1,0 +1,8 @@
+imports:
+  - { resource: parameters.yml }
+
+services:
+  admin.utils:
+    class: AdminBundle\Services\UtilsService
+
+  # html table configure

@@ -1,0 +1,45 @@
+Modular\MemberBundle\Entity\YuzhiMemberCredit:
+    type: entity
+    table: yuzhi_member_credit
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        uid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 用户UID
+        title:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 名称
+        total:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 数量
+        volume:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 精度小数点位数
+        frozen:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 冻结
+    lifecycleCallbacks: {  }

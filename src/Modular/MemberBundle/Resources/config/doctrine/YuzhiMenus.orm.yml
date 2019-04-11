@@ -1,0 +1,46 @@
+Modular\MemberBundle\Entity\YuzhiMenus:
+    type: entity
+    table: yuzhi_menus
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        parentId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 父ID
+            column: parent_id
+        title:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 菜单名称
+        icon:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 菜单图标
+        path:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 连接地址URL
+        isDelete:
+            type: boolean
+            nullable: true
+            column: is_delete
+    lifecycleCallbacks: {  }

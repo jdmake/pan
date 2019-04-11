@@ -1,0 +1,68 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block html %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                {% block table_title %}
+
+                {% endblock %}
+            </h3>
+            <div class="panel-options">
+                <a onclick="reload_tab(this);" href="#" class="reload">
+                    <i class="fa-rotate-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+            {% block table_buttons %}
+                <button onclick="open_modal('新建菜单', '/admin/menus/add', $('.reload'))" class="btn btn-orange"><i
+                            class="fa-plus"></i>
+                    新建
+                </button>
+            {% endblock %}
+
+            <table class="table table-model-2 table-hover">
+
+                <thead>
+                {% block table_thead %}
+                    <tr>
+                        <th>表格头</th>
+                    </tr>
+                {% endblock %}
+                </thead>
+
+                <tbody>
+                {% block table_tbody %}
+                    <tr>
+                        <td>数据</td>
+                    </tr>
+                {% endblock %}
+
+                </tbody>
+            </table>
+
+            {% block table_pagination %}
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div style="line-height: 1.8">
+                            每页显示 15 条, 共57条数据
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <ul class="pagination">
+                            <li class="paginate_button previous disabled"><a href="#">上一页</a></li>
+                            <li class="paginate_button active" aria-controls="example-4" tabindex="0"><a href="#">1</a></li>
+                            <li class="paginate_button " aria-controls="example-4" tabindex="0"><a href="#">2</a></li>
+                            <li class="paginate_button next" aria-controls="example-4" tabindex="0" id="example-4_next"><a
+                                        href="#">下一页</a></li>
+                        </ul>
+                    </div>
+                </div>
+            {% endblock %}
+
+        </div>
+    </div>
+{% endblock %}

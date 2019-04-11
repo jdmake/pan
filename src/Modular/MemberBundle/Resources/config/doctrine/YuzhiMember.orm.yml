@@ -1,0 +1,82 @@
+Modular\MemberBundle\Entity\YuzhiMember:
+    repositoryClass: Modular\MemberBundle\Repository\YuzhiMemberRepository
+    type: entity
+    table: yuzhi_member
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 登录帐号
+        password:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 登录密码
+        groupId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 分组ID
+            column: group_id
+        email:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 邮箱
+        mobile:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+                comment: 手机号
+        lastLoginIp:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 上次登录IP
+            column: last_login_ip
+        lastLoginTime:
+            type: datetime
+            nullable: true
+            options:
+                comment: 上次登录时间
+            column: last_login_time
+        loginCount:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 登录次数
+            column: login_count
+        createAt:
+            type: datetime
+            nullable: true
+            options:
+                comment: 创建时间
+            column: create_at
+        status:
+            type: boolean
+            nullable: true
+            options:
+                comment: 状态
+    lifecycleCallbacks: {  }

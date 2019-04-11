@@ -1,0 +1,53 @@
+{% extends "@Admin/layout.html.twig" %}
+
+{% block html %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">菜单管理</h3>
+            <div class="panel-options">
+                <a onclick="reload_tab(this);" href="#" class="reload">
+                    <i class="fa-rotate-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <button onclick="open_modal('新建菜单', '{{ path('admin_menus_add') }}', $('.reload'))" class="btn btn-orange"><i
+                        class="fa-plus"></i> 新建
+            </button>
+            <table class="table table-model-2 table-hover">
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>标题</th>
+                    <th>图标</th>
+                    <th>path</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for var in menus %}
+                    <tr>
+                        <td>{{ var.id }}</td>
+                        <td>{% autoescape false %}{{ var.title_display }}{% endautoescape %}</td>
+                        <td><i class="{{ var.icon }}"></i></td>
+                        <td>{{ var.path }}</td>
+                        <td>
+                            <button onclick="open_modal('编辑菜单', '{{ path("admin_menus_edit", {id: var.id}) }}', $('.reload'))" class="btn btn-orange"><i class="linecons-pencil"></i>编辑</button>
+                            <button class="btn btn-secondary"><i class="linecons-pencil"></i>添加子菜单</button>
+                            <button class="btn btn-red"><i class="linecons-trash"></i>删除</button>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" style="text-align: center">没有任何数据</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}

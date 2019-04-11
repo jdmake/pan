@@ -1,0 +1,12 @@
+# parameters Configuration
+parameters:
+  table.twig_extension.class: YuZhi\TableBundle\Twig\TableExtension
+
+# services Configuration
+services:
+  table.twig_extension:
+    class: '%table.twig_extension.class%'
+    tags:
+      - { name: 'twig.extension' }
+    arguments:
+      - { twig: '@templating' }

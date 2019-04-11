@@ -1,0 +1,81 @@
+Modular\MemberBundle\Entity\YuzhiMemberProfile:
+    type: entity
+    table: yuzhi_member_profile
+    uniqueConstraints:
+        ipx_uid:
+            columns:
+                - uid
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        uid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+                comment: 用户UID
+        nickname:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 昵称
+        portrait:
+            type: string
+            nullable: true
+            length: 256
+            options:
+                fixed: false
+                comment: 用户头像
+        realname:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 真实姓名
+        gender:
+            type: boolean
+            nullable: true
+            options:
+                comment: '性别 1 男 2 女'
+        age:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 年龄
+        address:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 地址
+        birthyear:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 出生年份
+        birthmonth:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 出生月份
+        birthday:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 出生日
+    lifecycleCallbacks: {  }

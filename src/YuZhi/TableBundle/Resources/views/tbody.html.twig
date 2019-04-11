@@ -1,0 +1,23 @@
+<tbody>
+
+{% for var in view.table_tbody %}
+    <tr>
+        {% for val in var %}
+            {% if val.value is defined %}
+                <td>{{ val.value is defined ? val.value : '' }}</td>
+            {% elseif val.param is defined %}
+                <td>
+                    {% for button in val.options %}
+                        <button class="{{ button.class is not defined ? 'btn btn-default' : button.class }}" type="button">
+                            {% if button.icon is defined %}
+                                <i class="{{ button.icon }}"></i>
+                            {% endif %}
+                            {{ button.title | default('未定义') }}
+                        </button>
+                    {% endfor %}
+                </td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+{% endfor %}
+</tbody>
