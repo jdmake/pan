@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Modular\MemberBundle\Entity\YuzhiMemberCredit" table="yuzhi_member_credit">
+    <unique-constraints>
+      <unique-constraint name="ipx_uid_title" columns="title,uid"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="uid" type="integer" column="uid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="title" type="string" column="title" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">名称</option>
+      </options>
+    </field>
+    <field name="total" type="integer" column="total" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">数量</option>
+      </options>
+    </field>
+    <field name="volume" type="integer" column="volume" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">精度小数点位数</option>
+      </options>
+    </field>
+    <field name="frozen" type="integer" column="frozen" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">冻结</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

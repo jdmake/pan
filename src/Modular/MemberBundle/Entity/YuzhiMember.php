@@ -2,18 +2,11 @@
 
 namespace Modular\MemberBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * YuzhiMember
  */
 class YuzhiMember
 {
-    /**
-     * @var integer
-     */
-    private $id;
-
     /**
      * @var string
      */
@@ -23,11 +16,6 @@ class YuzhiMember
      * @var string
      */
     private $password;
-
-    /**
-     * @var integer
-     */
-    private $groupId;
 
     /**
      * @var string
@@ -64,16 +52,21 @@ class YuzhiMember
      */
     private $status;
 
+    /**
+     * @var integer
+     */
+    private $id;
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @var \Modular\MemberBundle\Entity\YuzhiMemberGroup
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $group;
+
+    /**
+     * @var \Modular\MemberBundle\Entity\YuzhiMemberProfile
+     */
+    private $profile;
+
 
     /**
      * Set username
@@ -121,30 +114,6 @@ class YuzhiMember
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * Set groupId
-     *
-     * @param integer $groupId
-     *
-     * @return YuzhiMember
-     */
-    public function setGroupId($groupId)
-    {
-        $this->groupId = $groupId;
-
-        return $this;
-    }
-
-    /**
-     * Get groupId
-     *
-     * @return integer
-     */
-    public function getGroupId()
-    {
-        return $this->groupId;
     }
 
     /**
@@ -314,4 +283,63 @@ class YuzhiMember
     {
         return $this->status;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \Modular\MemberBundle\Entity\YuzhiMemberGroup $group
+     *
+     * @return YuzhiMember
+     */
+    public function setGroup(\Modular\MemberBundle\Entity\YuzhiMemberGroup $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Modular\MemberBundle\Entity\YuzhiMemberGroup
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * Set profile
+     *
+     * @param \Modular\MemberBundle\Entity\YuzhiMemberProfile $profile
+     *
+     * @return YuzhiMember
+     */
+    public function setProfile(\Modular\MemberBundle\Entity\YuzhiMemberProfile $profile = null)
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return \Modular\MemberBundle\Entity\YuzhiMemberProfile
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
 }
+

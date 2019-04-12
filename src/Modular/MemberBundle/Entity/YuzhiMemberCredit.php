@@ -10,11 +10,6 @@ class YuzhiMemberCredit
     /**
      * @var integer
      */
-    private $id;
-
-    /**
-     * @var integer
-     */
     private $uid;
 
     /**
@@ -37,16 +32,11 @@ class YuzhiMemberCredit
      */
     private $frozen;
 
-
     /**
-     * Get id
-     *
-     * @return integer
+     * @var integer
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $id;
+
 
     /**
      * Set uid
@@ -167,4 +157,15 @@ class YuzhiMemberCredit
     {
         return $this->frozen;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
+

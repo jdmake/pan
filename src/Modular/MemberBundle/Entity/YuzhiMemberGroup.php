@@ -8,11 +8,6 @@ namespace Modular\MemberBundle\Entity;
 class YuzhiMemberGroup
 {
     /**
-     * @var integer
-     */
-    private $id;
-
-    /**
      * @var string
      */
     private $title;
@@ -27,16 +22,11 @@ class YuzhiMemberGroup
      */
     private $isDefault;
 
-
     /**
-     * Get id
-     *
-     * @return integer
+     * @var integer
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $id;
+
 
     /**
      * Set title
@@ -109,4 +99,15 @@ class YuzhiMemberGroup
     {
         return $this->isDefault;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
+

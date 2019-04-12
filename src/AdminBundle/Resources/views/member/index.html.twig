@@ -5,7 +5,46 @@
 {% endblock %}
 
 {% block table_buttons %}
-    <button onclick="open_modal('新建菜单', '/admin/member/add', $('.reload'))" class="btn btn-orange"><i class="fa-plus"></i>
+    <button onclick="open_modal('新建菜单', '/admin/member/add', $('.reload'))" class="btn btn-orange"><i
+                class="fa-plus"></i>
         新建
     </button>
+{% endblock %}
+
+{% block table_thead %}
+    <tr>
+        <th>编号</th>
+        <th>昵称/头像</th>
+        <th>邮箱</th>
+        <th>手机号</th>
+        <th>会员组</th>
+        <th>最后登录IP</th>
+        <th>最后登录时间</th>
+        <th>登录次数</th>
+        <th>创建时间</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+{% endblock %}
+
+{% block table_tbody %}
+    {% for val in list %}
+        <tr>
+            <td>{{ val.id }}</td>
+            <td>{{ val.profile.nickname }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% else %}
+        <tr>
+            <td class="text-center" colspan="11">没有任何数据</td>
+        </tr>
+    {% endfor %}
 {% endblock %}

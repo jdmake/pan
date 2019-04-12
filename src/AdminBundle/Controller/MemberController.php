@@ -26,19 +26,24 @@ class MemberController extends CommonController
      */
     public function index()
     {
+        $row_count = 10;
+
+        $page = $this->request()->get('page', 1);
+
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('MemberBundle:YuzhiMember');
+        $res = $repository->createQueryBuilder('m')
+            ->setFirstResult(($page - 1) * $row_count)
+            ->setMaxResults($row_count)
+            ->select('m', 'p', 'g')
+            ->innerJoin('m.profile', 'p')
+            ->innerJoin('m.group', 'g')
+            ->getQuery()->getResult();
 
-        $res = $repository->createMember('jdamke', '2130111', [
-            ['title' => '积分', 'volume' => 1],
-            ['title' => '余额', 'volume' => 100],
-        ]);
-        if(!$res) {
-           return $this->error($repository->getError());
-        }
+        //$res = $repository->createMember('wjbhk', '2130111', $this->getParameter('credits'));
 
         return $this->render('AdminBundle:member:index.html.twig', [
-
+            'list' => $res,
         ]);
      }
 }

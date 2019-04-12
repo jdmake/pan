@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Modular\MemberBundle\Entity\YuzhiMemberProfile" table="yuzhi_member_profile">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nickname" type="string" column="nickname" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">昵称</option>
+      </options>
+    </field>
+    <field name="portrait" type="string" column="portrait" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">用户头像</option>
+      </options>
+    </field>
+    <field name="realname" type="string" column="realname" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">真实姓名</option>
+      </options>
+    </field>
+    <field name="gender" type="boolean" column="gender" nullable="true">
+      <options>
+        <option name="comment">性别 1 男 2 女</option>
+      </options>
+    </field>
+    <field name="age" type="integer" column="age" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">年龄</option>
+      </options>
+    </field>
+    <field name="address" type="string" column="address" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">地址</option>
+      </options>
+    </field>
+    <field name="birthyear" type="integer" column="birthyear" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">出生年份</option>
+      </options>
+    </field>
+    <field name="birthmonth" type="integer" column="birthmonth" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">出生月份</option>
+      </options>
+    </field>
+    <field name="birthday" type="integer" column="birthday" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">出生日</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

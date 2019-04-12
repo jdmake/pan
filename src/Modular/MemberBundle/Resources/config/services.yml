@@ -1,3 +1,8 @@
+parameters:
+  credits:
+    - {title: '积分', volume: 0}
+    - {title: '余额', volume: 100}
+
 services:
 #    member.example:
 #        class: Modular\MemberBundle\Example

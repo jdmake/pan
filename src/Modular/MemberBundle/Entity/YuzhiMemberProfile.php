@@ -8,16 +8,6 @@ namespace Modular\MemberBundle\Entity;
 class YuzhiMemberProfile
 {
     /**
-     * @var integer
-     */
-    private $id;
-
-    /**
-     * @var integer
-     */
-    private $uid;
-
-    /**
      * @var string
      */
     private $nickname;
@@ -62,40 +52,11 @@ class YuzhiMemberProfile
      */
     private $birthday;
 
-
     /**
-     * Get id
-     *
-     * @return integer
+     * @var integer
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $id;
 
-    /**
-     * Set uid
-     *
-     * @param integer $uid
-     *
-     * @return YuzhiMemberProfile
-     */
-    public function setUid($uid)
-    {
-        $this->uid = $uid;
-
-        return $this;
-    }
-
-    /**
-     * Get uid
-     *
-     * @return integer
-     */
-    public function getUid()
-    {
-        return $this->uid;
-    }
 
     /**
      * Set nickname
@@ -312,4 +273,15 @@ class YuzhiMemberProfile
     {
         return $this->birthday;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
+

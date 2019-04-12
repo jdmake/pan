@@ -15,6 +15,12 @@ use Modular\MemberBundle\Entity\YuzhiMemberCredit;
 use Modular\MemberBundle\Entity\YuzhiMemberProfile;
 use Modular\MemberBundle\Error;
 
+/**
+ * 实体仓库层
+ *
+ * Class YuzhiMemberRepository
+ * @package Modular\MemberBundle\Repository
+ */
 class YuzhiMemberRepository extends EntityRepository
 {
     protected $error = '';
@@ -38,16 +44,22 @@ class YuzhiMemberRepository extends EntityRepository
         $this->getEntityManager()->beginTransaction();
 
         try {
+
+            $em = $this->getEntityManager();
+            $profile = new YuzhiMemberProfile();
+            $profile->setNickname('');
+            $em->persist($profile);
+            $em->flush();
+
             $member = new YuzhiMember();
             $member->setUsername($username);
             $member->setPassword(password_hash($password, PASSWORD_BCRYPT));
-            $group = $this->getDefGroup();
-            $member->setGroupId($group ? $group->getId() : 0);
+            $member->setGroup($this->getDefGroup());
             $member->setLoginCount(0);
             $member->setCreateAt(new \DateTime());
+            $member->setProfile($profile);
             $member->setStatus(0);
 
-            $em = $this->getEntityManager();
             $em->persist($member);
             $em->flush();
 
@@ -62,29 +74,12 @@ class YuzhiMemberRepository extends EntityRepository
             return false;
         }
 
-        // 创建 profile
-        try {
-
-            $profile = new YuzhiMemberProfile();
-            $profile->setUid($member->getId());
-
-            $em = $this->getEntityManager();
-            $em->persist($profile);
-            $em->flush();
-
-        } catch (\Exception $exception) {
-            $this->error = $exception->getMessage();
-
-            $this->getEntityManager()->rollback();
-            return false;
-        }
-
         // 创建 credit
         foreach ($credit_list as $item) {
             try{
                 $credit = new YuzhiMemberCredit();
-                $credit->setUid($member->getId());
                 $credit->setTitle($item['title']);
+                $credit->setUid($member->getId());
                 $credit->setVolume($item['volume']);
                 $credit->setTotal(0);
                 $credit->setFrozen(0);
@@ -116,4 +111,6 @@ class YuzhiMemberRepository extends EntityRepository
                 'isDefault' => 1
             ]);
     }
+
+
 }

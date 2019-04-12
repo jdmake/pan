@@ -10,11 +10,6 @@ class YuzhiMenus
     /**
      * @var integer
      */
-    private $id;
-
-    /**
-     * @var integer
-     */
     private $parentId;
 
     /**
@@ -37,16 +32,11 @@ class YuzhiMenus
      */
     private $isDelete;
 
-
     /**
-     * Get id
-     *
-     * @return integer
+     * @var integer
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $id;
+
 
     /**
      * Set parentId
@@ -167,4 +157,15 @@ class YuzhiMenus
     {
         return $this->isDelete;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
+

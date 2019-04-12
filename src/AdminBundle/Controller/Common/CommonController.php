@@ -17,7 +17,7 @@ class CommonController extends Controller
 {
     protected function render($view, array $parameters = [], Response $response = null)
     {
-        $repository = $this->getDoctrine()->getRepository('AdminBundle:YuzhiMenus');
+        $repository = $this->getDoctrine()->getRepository('MemberBundle:YuzhiMenus');
         $list = $repository
             ->createQueryBuilder('a')
             ->select('a')
@@ -74,5 +74,10 @@ class CommonController extends Controller
     protected function getUtils()
     {
         return $this->get('admin.utils');
+    }
+
+    protected function request()
+    {
+        return $this->get('request_stack')->getCurrentRequest();
     }
 }

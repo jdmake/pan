@@ -5380,6 +5380,13 @@ blockquote small {
   height: 1px;
   background-color: #eeeeee;
 }
+div.dataTables_paginate {
+  float: right;
+  margin: 0;
+}
+.dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate {
+  padding-top: 10px;
+}
 .table.table-condensed > thead > tr > td,
 .table.table-condensed > tbody > tr > td,
 .table.table-condensed > tfoot > tr > td,
