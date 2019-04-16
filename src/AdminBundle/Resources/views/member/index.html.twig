@@ -5,19 +5,15 @@
 {% endblock %}
 
 {% block table_buttons %}
-    <button onclick="open_modal('新建菜单', '/admin/member/add', $('.reload'))" class="btn btn-orange"><i
-                class="fa-plus"></i>
-        新建
-    </button>
 {% endblock %}
 
 {% block table_thead %}
     <tr>
         <th>编号</th>
         <th>昵称/头像</th>
+        <th>会员组</th>
         <th>邮箱</th>
         <th>手机号</th>
-        <th>会员组</th>
         <th>最后登录IP</th>
         <th>最后登录时间</th>
         <th>登录次数</th>
@@ -31,16 +27,22 @@
     {% for val in list %}
         <tr>
             <td>{{ val.id }}</td>
-            <td>{{ val.profile.nickname }}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                <p><img style="width: 52px; height: 52px;border-radius: 100%" src="/assets/images/user-4.png" alt=""></p>
+                {{ val.profile.nickname | default(val.username) }}
+            </td>
+            <td><span style="background: #777" class="badge badge-default">{{ val.group.title | default('未绑定') }}</span></td>
+            <td>{{ val.email | default('未绑定') }}</td>
+            <td>{{ val.mobile | default('未绑定') }}</td>
+            <td>{{ val.last_login_ip | default('-.-.-.-') }}</td>
+            <td>{{ val.last_login_time | default('-.-.- --:--:--') }}</td>
+            <td>{{ val.login_count | default(0) }}</td>
+            <td>{{ val.createAt.format("Y-m-d H:i") }}</td>
+            <td>{{ val.status ? '不可用' : '可用' }}</td>
+            <td>
+                <button onclick="open_modal('编辑菜单', '{{ path("admin_member_edit", { id: val.id }) }}', $('.reload'))" class="btn btn-orange"><i class="linecons-pencil"></i>编辑</button>
+                <button class="btn btn-red"><i class="linecons-trash"></i>删除</button>
+            </td>
         </tr>
     {% else %}
         <tr>

@@ -1,0 +1,3 @@
+member_homepage:
+  resource: '@MemberBundle/Controller/'
+  type: annotation

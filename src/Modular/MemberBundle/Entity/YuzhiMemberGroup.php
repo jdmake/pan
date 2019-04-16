@@ -109,5 +109,9 @@ class YuzhiMemberGroup
     {
         return $this->id;
     }
+
+
+
+
 }
 

@@ -7,3 +7,7 @@ services:
 #    member.example:
 #        class: Modular\MemberBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    member.auth:
+        class: Modular\MemberBundle\Services\MemberAuth
+        arguments: ["@session"]

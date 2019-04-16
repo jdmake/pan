@@ -789,7 +789,7 @@ body {
 .sidebar-menu {
   display: table-cell;
   position: relative;
-  width: 340px;
+  width: 240px;
   background: #2c2e2f;
   z-index: 1;
 }
@@ -4670,7 +4670,6 @@ label.cbr-inline + .cbr-inline {
 }
 .nav.nav-tabs + .tab-content {
   background: #FFF;
-  padding: 30px;
   margin-bottom: 30px;
 }
 .nav.nav-tabs + .tab-content > p:last-child,

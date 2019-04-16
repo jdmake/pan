@@ -36,7 +36,7 @@ class YuzhiMemberRepository extends EntityRepository
     /**
      * @param $username
      * @param $password
-     * @param array $credit_list  credit 种类
+     * @param array $credit_list credit 种类
      * @return int
      */
     public function createMember($username, $password, $credit_list = [])
@@ -76,7 +76,7 @@ class YuzhiMemberRepository extends EntityRepository
 
         // 创建 credit
         foreach ($credit_list as $item) {
-            try{
+            try {
                 $credit = new YuzhiMemberCredit();
                 $credit->setTitle($item['title']);
                 $credit->setUid($member->getId());
@@ -87,8 +87,7 @@ class YuzhiMemberRepository extends EntityRepository
                 $em = $this->getEntityManager();
                 $em->persist($credit);
                 $em->flush();
-            }catch (\Exception $exception)
-            {
+            } catch (\Exception $exception) {
                 $this->error = $exception->getMessage();
 
                 $this->getEntityManager()->rollback();
@@ -97,6 +96,7 @@ class YuzhiMemberRepository extends EntityRepository
         }
 
         $this->getEntityManager()->commit();
+
         return $member->getId();
     }
 
@@ -112,5 +112,40 @@ class YuzhiMemberRepository extends EntityRepository
             ]);
     }
 
+    public function getGroups()
+    {
+        $em = $this->getEntityManager();
+        return $em->getRepository('MemberBundle:YuzhiMemberGroup')
+            ->findAll();
+    }
 
+    /**
+     * 用户登录
+     *
+     * @param $username
+     * @param $pawssord
+     * @return bool
+     */
+    public function userLogin($username, $pawssord)
+    {
+        $rep = $this->getEntityManager()->getRepository('MemberBundle:YuzhiMember');
+        $user = $rep->findOneBy([
+            'username' => $username
+        ]);
+
+        if(!$user) {
+
+            $this->error = '登录账号不存在';
+            return false;
+        }
+
+
+        if (!password_verify($pawssord, $user->getPassword())) {
+
+            $this->error = '密码错误';
+            return false;
+        }
+
+        return $user->getId();
+    }
 }
